@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
+import constants.Messages;
 import utilities.ExcelUtility;
 
 public class LoginTest extends TestNGBase {
@@ -21,9 +22,9 @@ public class LoginTest extends TestNGBase {
 		usernameFld.sendKeys(usernameValue);
 		passwordFld.sendKeys(passwordValue);
 		signinBtn.click();
-		String loginPageUrl=driver.getCurrentUrl();
-		String homePageUrl="https://groceryapp.uniqassosiates.com/admin";
-		Assert.assertEquals(loginPageUrl,homePageUrl,"Login is not successful");
+		String loginPageUrl = driver.getCurrentUrl();
+		String homePageUrl = "https://groceryapp.uniqassosiates.com/admin";
+		Assert.assertEquals(loginPageUrl, homePageUrl, Messages.LOGIN_ASSERTS_VALID);
 	}
 
 	@Test
@@ -36,8 +37,8 @@ public class LoginTest extends TestNGBase {
 		usernameFld.sendKeys(usernameValue);
 		passwordFld.sendKeys(passwordValue);
 		signinBtn.click();
-		String loginPageUrl=driver.getCurrentUrl();
-		Assert.assertEquals(loginPageUrl,loginPageUrl,"Login is successful,  which means failed to meet the expected result ");
+		String loginPageUrl = driver.getCurrentUrl();
+		Assert.assertEquals(loginPageUrl, loginPageUrl, Messages.LOGIN_ASSERTS_INVALID);
 	}
 
 	@Test
@@ -50,8 +51,8 @@ public class LoginTest extends TestNGBase {
 		usernameFld.sendKeys(usernameValue);
 		passwordFld.sendKeys(passwordValue);
 		signinBtn.click();
-		String loginPageUrl=driver.getCurrentUrl();
-		Assert.assertEquals(loginPageUrl,loginPageUrl,"Login is successful,  which means failed to meet the expected result ");
+		String loginPageUrl = driver.getCurrentUrl();
+		Assert.assertEquals(loginPageUrl, loginPageUrl, Messages.LOGIN_ASSERTS_INVALID);
 	}
 
 	@Test
@@ -64,7 +65,7 @@ public class LoginTest extends TestNGBase {
 		usernameFld.sendKeys(usernameValue);
 		passwordFld.sendKeys(passwordValue);
 		signinBtn.click();
-		String loginPageUrl=driver.getCurrentUrl();
-		Assert.assertEquals(loginPageUrl,loginPageUrl,"Login is successful,  which means failed to meet the expected result ");
+		String loginPageUrl = driver.getCurrentUrl();
+		Assert.assertEquals(loginPageUrl, loginPageUrl, Messages.LOGIN_ASSERTS_INVALID);
 	}
 }

@@ -8,6 +8,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
+import constants.Messages;
 import utilities.ExcelUtility;
 
 public class HomeTest extends TestNGBase {
@@ -27,6 +28,6 @@ public class HomeTest extends TestNGBase {
 		logoutBtn.click();
 		String loginPageURL="https://groceryapp.uniqassosiates.com/admin/login";
 		String currentPageUrl=driver.getCurrentUrl();
-		Assert.assertEquals(currentPageUrl, loginPageURL,"Verification Logout failed");
+		Assert.assertEquals(currentPageUrl, loginPageURL,Messages.HOME_ASSERTS_LOGOUT);
 	}
 }

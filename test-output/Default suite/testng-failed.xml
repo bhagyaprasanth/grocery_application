@@ -5,10 +5,9 @@
     <classes>
       <class name="test_script.TestNews">
         <methods>
-          <include name="verifyHomeLinkClick"/>
-          <include name="verifyResetBtnClick"/>
-          <include name="initializeBrowser"/>
+          <include name="verifySearchNews"/>
           <include name="closeBrowser"/>
+          <include name="initializeBrowser"/>
         </methods>
       </class> <!-- test_script.TestNews -->
     </classes>
