@@ -9,7 +9,7 @@ public class AdminPage {
 	public WebDriver driver;
 
 	public AdminPage(WebDriver driver) {
-
+		this.driver = driver;
 	}
 
 	public void adminPageinkClick() {
@@ -32,13 +32,15 @@ public class AdminPage {
 		WebElement passwordAdminTestFld = driver.findElement(By.id("password"));
 		passwordAdminTestFld.sendKeys(randomPasswordFaker);
 	}
+
 	public void selectUsertype(Integer userTypeIndex) {
 		WebElement dropdown = driver.findElement(By.xpath("//select[@id='user_type']"));
 		Select select = new Select(dropdown);
 		select.selectByIndex(userTypeIndex);
 	}
-	public void saveBtnClick () {
-		WebElement saveBtn=driver.findElement(By.xpath("//button[@name='Create']"));
+
+	public void saveBtnClick() {
+		WebElement saveBtn = driver.findElement(By.xpath("//button[@name='Create']"));
 		saveBtn.click();
 	}
 }

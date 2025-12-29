@@ -8,7 +8,7 @@ public class NewsPage {
 	public WebDriver driver;
 
 	public NewsPage(WebDriver driver) {
-
+		this.driver = driver;
 	}
 
 	public void newsLinkClick() {
@@ -46,10 +46,12 @@ public class NewsPage {
 		WebElement searchBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-primary']"));
 		searchBtn.click();
 	}
+
 	public void enterSearchInput(String searchString) {
 		WebElement searchInputFld = driver.findElement(By.xpath("//input[@name='un']"));
 		searchInputFld.sendKeys(searchString);
 	}
+
 	public void searchActionBtnClick() {
 		WebElement searchActionBtn = driver.findElement(By.xpath("//button[@name='Search']"));
 		searchActionBtn.click();
