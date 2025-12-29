@@ -8,4 +8,5 @@ public class Messages {
 	public static final String NEWS_ASSERTS_REFRESH_BUTTON = "Did not refresh the news page as expected";
 	public static final String NEWS_ASSERTS_SAVE_BUTTON = "Failed to save news. Did not meet expected result";
 	public static final String NEWS_ASSERTS_SEARCH_BUTTON = "Failed to fetch result properly. Did not meet expected result";
+	public static final String ADMIN_ASSERTS_NEW_BUTTON = "Failed to create user. Did not meet expected result";
 }

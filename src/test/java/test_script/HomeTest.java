@@ -9,23 +9,25 @@ import org.testng.annotations.Test;
 
 import base.TestNGBase;
 import constants.Messages;
+import pages.HomePage;
+import pages.LoginPage;
 import utilities.ExcelUtility;
 
 public class HomeTest extends TestNGBase {
-	@Test
+	@Test(description = " Verify logout click ")
 	public void VerifyLogout() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
-		WebElement usernameFld = driver.findElement(By.xpath("//input[@name='username']"));
-		WebElement passwordFld = driver.findElement(By.xpath("//input[@name='password']"));
-		WebElement signinBtn = driver.findElement(By.xpath("//button[@type='submit']"));
-		usernameFld.sendKeys(usernameValue);
-		passwordFld.sendKeys(passwordValue);
-		signinBtn.click();
-		WebElement adminIcon = driver.findElement(By.xpath("//a[@data-toggle='dropdown']"));
-		adminIcon.click();
-		WebElement logoutBtn = driver.findElement(By.xpath("//i[@class='ace-icon fa fa-power-off']"));
-		logoutBtn.click();
+		
+		LoginPage loginPage = new LoginPage(driver);
+		loginPage.enterUserName(usernameValue);
+		loginPage.enterPassword(passwordValue);
+		loginPage.clickSignInBtn();
+		
+		HomePage homePage=new HomePage(driver);
+		homePage.adminIconClick();
+		homePage.logoutBtnClick();
+		
 		String loginPageURL="https://groceryapp.uniqassosiates.com/admin/login";
 		String currentPageUrl=driver.getCurrentUrl();
 		Assert.assertEquals(currentPageUrl, loginPageURL,Messages.HOME_ASSERTS_LOGOUT);
