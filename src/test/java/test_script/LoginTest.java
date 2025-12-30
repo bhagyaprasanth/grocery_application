@@ -5,6 +5,7 @@ import java.io.IOException;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.testng.Assert;
+import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
@@ -56,10 +57,10 @@ public class LoginTest extends TestNGBase {
 		Assert.assertEquals(loginPageUrl, loginPageUrl, Messages.LOGIN_ASSERTS_INVALID);
 	}
 
-	@Test(priority = 4, description = "Verify login with invalid username and invalid password")
-	public void verifyLoginWithInvalidUsernameAndInvalidPassword() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(4, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(4, 1, "LoginPage");
+	@Test(priority = 4, description = "Verify login with invalid username and invalid password", dataProvider="loginProvider")
+	public void verifyLoginWithInvalidUsernameAndInvalidPassword(String usernameValue, String passwordValue) throws IOException {
+//		String usernameValue = ExcelUtility.getStringData(4, 0, "LoginPage");
+//		String passwordValue = ExcelUtility.getStringData(4, 1, "LoginPage");
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
@@ -68,5 +69,13 @@ public class LoginTest extends TestNGBase {
 
 		String loginPageUrl = driver.getCurrentUrl();
 		Assert.assertEquals(loginPageUrl, loginPageUrl, Messages.LOGIN_ASSERTS_INVALID);
+	}
+	@DataProvider(name="loginProvider")
+	public Object[][] getDataFromDataProvider() throws IOException
+	{
+		return new Object[][] { new Object[] {"user","password"},
+			new Object[] {"username","pass"},
+			new Object[] {"user","password"}
+		};
 	}
 }

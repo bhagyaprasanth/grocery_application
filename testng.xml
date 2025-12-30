@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
+<suite name="Suite">
+  <test thread-count="5" name="Test">
+    <classes>
+<!--      <class name="test_script.HomeTest"/>-->
+      <class name="test_script.NewsTest">
+      	<methods>
+	<!--   include - only the methods specified in the include tag wil be executed -->
+	<!--
+		<include name="verifySaveNews"></include>
+	--> 
+	
+	<!--   exclude -  methods specified in the exclude tag wil not be executed -->
+      		<exclude name="verifySaveNews"></exclude>
+      	</methods>
+      </class>
+<!--      <class name="test_script.LoginTest"/>-->
+<!--      <class name="test_script.AdminTest"/>-->
+    </classes>
+  </test> <!-- Test -->
+</suite> <!-- Suite -->
