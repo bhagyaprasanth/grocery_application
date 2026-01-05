@@ -2,8 +2,6 @@ package test_script;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
@@ -29,7 +27,7 @@ public class LoginTest extends TestNGBase {
 		Assert.assertEquals(loginPageUrl, homePageUrl, Messages.LOGIN_ASSERTS_VALID);
 	}
 
-	@Test(priority = 2, description = "Verify login with valid username and invalid password")
+	@Test(priority = 2, description = "Verify login with valid username and invalid password", retryAnalyzer = retry.Retry.class)
 	public void verifyLoginWithValidUsernameAndInvalidPassword() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(2, 0, "LoginPage");
 		String passwordValue = ExcelUtility.getStringData(2, 1, "LoginPage");

@@ -2,9 +2,6 @@ package test_script;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.Select;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -39,8 +36,7 @@ public class AdminTest extends TestNGBase {
 		adminPage.selectUsertype(1);
 		adminPage.saveBtnClick();
 
-		WebElement alertDiv = driver.findElement(By.xpath("//div[@class='alert alert-success alert-dismissible']"));
-		Boolean alertDispayedFlag = alertDiv.isDisplayed();
+		boolean alertDispayedFlag = adminPage.checkWhetheralertDisplayed();
 		Assert.assertTrue(alertDispayedFlag, Messages.ADMIN_ASSERTS_NEW_BUTTON);
 	}
 

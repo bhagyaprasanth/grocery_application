@@ -2,8 +2,6 @@ package test_script;
 
 import java.io.IOException;
 
-import org.openqa.selenium.By;
-import org.openqa.selenium.WebElement;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -68,8 +66,7 @@ public class NewsTest extends TestNGBase {
 		NewsPage.enternewsTextAreaValue("News Add Button test");
 		NewsPage.saveBtnClick();
 
-		WebElement successDiv = driver.findElement(By.xpath("//div[@class='alert alert-success alert-dismissible']"));
-		Boolean isalertDisplayed = successDiv.isDisplayed();
+		boolean isalertDisplayed = NewsPage.checkWhetherAlertDisplayed();
 		Assert.assertTrue(isalertDisplayed, Messages.NEWS_ASSERTS_SAVE_BUTTON);
 
 	}
@@ -91,11 +88,7 @@ public class NewsTest extends TestNGBase {
 		NewsPage.enterSearchInput(searchString);
 		NewsPage.searchActionBtnClick();
 
-		WebElement newsTableFirstRow = driver
-				.findElement(By.xpath("//table[@class='table table-bordered table-hover table-sm']/tbody/tr[1]"));
-		String result1 = newsTableFirstRow.getText();
-
-		Boolean isFirstRowContainsSearchString = result1.contains(searchString);
+		boolean isFirstRowContainsSearchString = NewsPage.checkWhetherResultMatched(searchString);
 		Assert.assertTrue(isFirstRowContainsSearchString, Messages.NEWS_ASSERTS_SEARCH_BUTTON);
 		/*
 		 * Another method //assertion WebElement
