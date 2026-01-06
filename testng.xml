@@ -5,21 +5,22 @@
 		<listener class-name="report_generation.Listener"></listener>
 	</listeners>
   <test thread-count="5" name="Test">
+  <parameter name="browser" value="chrome"></parameter>
     <classes>
-<!--      <class name="test_script.HomeTest"/>-->
+      <class name="test_script.HomeTest" />
       <class name="test_script.NewsTest">
       	<methods>
-	<!--   include - only the methods specified in the include tag wil be executed -->
-	<!--
+					<!--   include - only the methods specified in the include tag wil be executed -->
+					<!--
 		<include name="verifySaveNews"></include>
-	--> 
-	
-	<!--   exclude -  methods specified in the exclude tag wil not be executed -->
-      		<exclude name="verifySaveNews"></exclude>
+	-->
+
+					<!--   exclude -  methods specified in the exclude tag wil not be executed -->
+					<!--      		<exclude name="verifySaveNews"></exclude>-->
       	</methods>
       </class>
-<!--      <class name="test_script.LoginTest"/>-->
-<!--      <class name="test_script.AdminTest"/>-->
+	  <class name="test_script.LoginTest"/>
+      <class name="test_script.AdminTest"/>
     </classes>
   </test> <!-- Test -->
 </suite> <!-- Suite -->

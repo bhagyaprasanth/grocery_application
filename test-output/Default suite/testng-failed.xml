@@ -5,9 +5,10 @@
     <classes>
       <class name="test_script.HomeTest">
         <methods>
+          <include name="driverQuit"/>
           <include name="VerifyLogout"/>
-          <include name="closeBrowser"/>
           <include name="initializeBrowser"/>
+          <include name="closeBrowser"/>
         </methods>
       </class> <!-- test_script.HomeTest -->
     </classes>

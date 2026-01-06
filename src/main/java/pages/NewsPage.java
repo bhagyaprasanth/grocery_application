@@ -6,11 +6,13 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
 
+import utilities.PageUtility;
 import utilities.WaitUtility;
 
 public class NewsPage {
 	public WebDriver driver;
 	WaitUtility waitUtility = new WaitUtility();
+	PageUtility pageUtility=new PageUtility();
 
 	public NewsPage(WebDriver driver) {
 		this.driver = driver;
@@ -22,7 +24,9 @@ public class NewsPage {
 
 	public void newsLinkClick() {
 //		WebElement newsLink = driver.findElement(By.xpath("//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']"));
-		newsLink.click();
+//		newsLink.click();
+
+		pageUtility.clickOnElement(newsLink);
 	}
 
 	@FindBy(linkText = "Home")
@@ -30,7 +34,8 @@ public class NewsPage {
 
 	public void homeLinkClick() {
 //		WebElement homeLink = driver.findElement(By.linkText("Home"));
-		homeLink.click();
+//		homeLink.click();
+		pageUtility.clickOnElement(homeLink);
 	}
 
 	@FindBy(linkText = "Reset")
@@ -38,7 +43,8 @@ public class NewsPage {
 
 	public void resetLinkClick() {
 //		WebElement resetLink = driver.findElement(By.linkText("Reset"));
-		resetLink.click();
+//		resetLink.click();
+		pageUtility.clickOnElement(resetLink);
 	}
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
@@ -46,7 +52,8 @@ public class NewsPage {
 
 	public void newBtnClick() {
 //		WebElement newBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-danger']"));
-		newBtn.click();
+//		newBtn.click();
+		pageUtility.clickOnElement(newBtn);
 	}
 
 	@FindBy(xpath = "//textarea[@id='news']")
@@ -54,7 +61,8 @@ public class NewsPage {
 
 	public void enternewsTextAreaValue(String newsText) {
 //		WebElement newsTextArea = driver.findElement(By.xpath("//textarea[@id='news']"));
-		newsTextArea.sendKeys(newsText);
+//		newsTextArea.sendKeys(newsText);
+		pageUtility.sendDataToElement(newsTextArea, newsText);
 	}
 
 	@FindBy(xpath = "//button[@class='btn btn-danger']")
@@ -62,7 +70,8 @@ public class NewsPage {
 
 	public void saveBtnClick() {
 //		WebElement saveBtn = driver.findElement(By.xpath("//button[@class='btn btn-danger']"));
-		saveBtn.click();
+//		saveBtn.click();
+		pageUtility.clickOnElement(saveBtn);
 	}
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
@@ -70,7 +79,8 @@ public class NewsPage {
 
 	public void searchBtnClick() {
 //		WebElement searchBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-primary']"));
-		searchBtn.click();
+//		searchBtn.click();
+		pageUtility.clickOnElement(searchBtn);
 	}
 
 	@FindBy(xpath = "//input[@name='un']")
@@ -78,7 +88,8 @@ public class NewsPage {
 
 	public void enterSearchInput(String searchString) {
 //		WebElement searchInputFld = driver.findElement(By.xpath("//input[@name='un']"));
-		searchInputFld.sendKeys(searchString);
+//		searchInputFld.sendKeys(searchString);
+		pageUtility.sendDataToElement(searchInputFld, searchString);
 	}
 
 	@FindBy(xpath = "//button[@name='Search']")
@@ -87,7 +98,8 @@ public class NewsPage {
 	public void searchActionBtnClick() {
 //		WebElement searchActionBtn = driver.findElement(By.xpath("//button[@name='Search']"));
 		waitUtility.waitUntilClickable(driver, searchActionBtn);
-		searchActionBtn.click();
+//		searchActionBtn.click();
+		pageUtility.clickOnElement(searchActionBtn);
 	}
 
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")
