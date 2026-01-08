@@ -1,5 +1,7 @@
 package report_generation;
 
+import java.lang.reflect.Field;
+
 import org.openqa.selenium.WebDriver;
 import org.testng.ITestContext;
 import org.testng.ITestListener;
@@ -60,7 +62,7 @@ public class Listener implements ITestListener {
 		ITestListener.super.onTestFailure(result);
 		extentTest.get().log(Status.FAIL, "Test Failed");
 		extentTest.get().fail(result.getThrowable());
-		WebDriver driver = null;
+		WebDriver driver = getDriverFromTestInstance(result);
 		String testMethodName = result.getMethod().getMethodName();
 		try {
 			driver = (WebDriver) result.getTestClass().getRealClass().getDeclaredField("driver")
@@ -106,5 +108,23 @@ public class Listener implements ITestListener {
 	public void onFinish(ITestContext context) {
 		ITestListener.super.onFinish(context);
 		extent.flush();
+	}
+	private WebDriver getDriverFromTestInstance(ITestResult result) {
+	    Object testInstance = result.getInstance();
+	    Class<?> clazz = testInstance.getClass();
+
+	    while (clazz != null) {
+	        try {
+	            Field field = clazz.getDeclaredField("driver");
+	            field.setAccessible(true);
+	            return (WebDriver) field.get(testInstance);
+	        } catch (NoSuchFieldException e) {
+	            clazz = clazz.getSuperclass(); // move to parent
+	        } catch (IllegalAccessException e) {
+	            e.printStackTrace();
+	            break;
+	        }
+	    }
+	    return null;
 	}
 }
