@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
+import constants.Constants;
 import constants.Messages;
 import pages.AdminPage;
 import pages.LoginPage;
@@ -15,8 +16,8 @@ import utilities.FakerUtility;
 public class AdminTest extends TestNGBase {
 	@Test(description = " Verify add user ")
 	public void verifyAddUser() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(1, 0,Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(1, 1,Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);

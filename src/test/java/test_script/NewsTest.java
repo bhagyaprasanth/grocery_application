@@ -6,6 +6,7 @@ import org.testng.Assert;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
+import constants.Constants;
 import constants.Messages;
 import pages.LoginPage;
 import pages.NewsPage;
@@ -14,8 +15,8 @@ import utilities.ExcelUtility;
 public class NewsTest extends TestNGBase {
 	@Test(description = " Verify home link click ")
 	public void verifyHomeLinkClick() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
@@ -50,10 +51,10 @@ public class NewsTest extends TestNGBase {
 		Assert.assertEquals(newsListPageURL, currentPageURL, Messages.NEWS_ASSERTS_HOME_PAGE_LINK);
 	}
 
-	@Test(description = " Verify save news click ")
+	@Test(description = " Verify save news click ",groups = {"smoke"})
 	public void verifySaveNews() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
@@ -73,8 +74,8 @@ public class NewsTest extends TestNGBase {
 
 	@Test(description = " Verify search news click ")
 	public void verifySearchNews() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);

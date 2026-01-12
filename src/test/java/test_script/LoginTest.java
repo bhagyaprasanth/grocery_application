@@ -7,6 +7,7 @@ import org.testng.annotations.DataProvider;
 import org.testng.annotations.Test;
 
 import base.TestNGBase;
+import constants.Constants;
 import constants.Messages;
 import pages.LoginPage;
 import utilities.ExcelUtility;
@@ -14,8 +15,8 @@ import utilities.ExcelUtility;
 public class LoginTest extends TestNGBase {
 	@Test(priority = 1, description = "Verify login with valid credentials")
 	public void verifyLoginWithValidCredentials() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(1, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
@@ -29,8 +30,8 @@ public class LoginTest extends TestNGBase {
 
 	@Test(priority = 2, description = "Verify login with valid username and invalid password", retryAnalyzer = retry.Retry.class)
 	public void verifyLoginWithValidUsernameAndInvalidPassword() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(2, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(2, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(2, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(2, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
@@ -43,8 +44,8 @@ public class LoginTest extends TestNGBase {
 
 	@Test(priority = 3, description = "Verify login with invalid username and valid password")
 	public void verifyLoginWithInvalidUsernameAndValidPassword() throws IOException {
-		String usernameValue = ExcelUtility.getStringData(3, 0, "LoginPage");
-		String passwordValue = ExcelUtility.getStringData(3, 1, "LoginPage");
+		String usernameValue = ExcelUtility.getStringData(3, 0, Constants.LOGINSHEET);
+		String passwordValue = ExcelUtility.getStringData(3, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue);
