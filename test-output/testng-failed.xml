@@ -1,50 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE suite SYSTEM "https://testng.org/testng-1.0.dtd">
-<suite name="Failed suite [Suite]" guice-stage="DEVELOPMENT">
-  <listeners>
-    <listener class-name="report_generation.Listener"/>
-  </listeners>
-  <test thread-count="5" name="Test(failed)">
-    <parameter name="browser" value="chrome"/>
+<suite name="Failed suite [Default suite]" guice-stage="DEVELOPMENT">
+  <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="test_script.NewsTest">
-        <methods>
-          <include name="verifySearchNews"/>
-          <include name="driverQuit"/>
-          <include name="verifySaveNews"/>
-          <include name="verifyHomeLinkClick"/>
-          <include name="verifyResetBtnClick"/>
-          <include name="initializeBrowser"/>
-          <include name="closeBrowser"/>
-        </methods>
-      </class> <!-- test_script.NewsTest -->
-      <class name="test_script.AdminTest">
-        <methods>
-          <include name="driverQuit"/>
-          <include name="verifyAddUser"/>
-          <include name="closeBrowser"/>
-          <include name="initializeBrowser"/>
-        </methods>
-      </class> <!-- test_script.AdminTest -->
-      <class name="test_script.HomeTest">
-        <methods>
-          <include name="driverQuit"/>
-          <include name="VerifyLogout"/>
-          <include name="closeBrowser"/>
-          <include name="initializeBrowser"/>
-        </methods>
-      </class> <!-- test_script.HomeTest -->
       <class name="test_script.LoginTest">
         <methods>
           <include name="driverQuit"/>
-          <include name="verifyLoginWithValidUsernameAndInvalidPassword"/>
-          <include name="verifyLoginWithInvalidUsernameAndValidPassword"/>
           <include name="verifyLoginWithValidCredentials"/>
-          <include name="verifyLoginWithInvalidUsernameAndInvalidPassword"/>
           <include name="closeBrowser"/>
           <include name="initializeBrowser"/>
         </methods>
       </class> <!-- test_script.LoginTest -->
     </classes>
-  </test> <!-- Test(failed) -->
-</suite> <!-- Failed suite [Suite] -->
+  </test> <!-- Default test(failed) -->
+</suite> <!-- Failed suite [Default suite] -->

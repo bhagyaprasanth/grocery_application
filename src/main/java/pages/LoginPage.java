@@ -22,24 +22,27 @@ public class LoginPage {
 	@FindBy(xpath = "//input[@name='username']")
 	WebElement usernameFld;
 
-	public void enterUserName(String usernameValue) {
+	public LoginPage enterUserName(String usernameValue) {
 
 //		WebElement usernameFld = driver.findElement(By.xpath("//input[@name='username']"));
 //		usernameFld.sendKeys(usernameValue);
 		pageUtility.sendDataToElement(usernameFld,usernameValue);
+		return this;
 	}
 
 	@FindBy(xpath="//input[@name='password']") WebElement passwordFld;
-	public void enterPassword(String passwordValue) {
+	public LoginPage enterPassword(String passwordValue) {
 //		WebElement passwordFld = driver.findElement(By.xpath("//input[@name='password']"));
 //		passwordFld.sendKeys(passwordValue);
 		pageUtility.sendDataToElement(passwordFld, passwordValue);
+		return this;
 	}
 @FindBy(xpath="//button[@type='submit']") WebElement signinBtn;
-	public void clickSignInBtn() {
+	public HomePage clickSignInBtn() {
 //		WebElement signinBtn = driver.findElement(By.xpath("//button[@type='submit']"));
 		waitUtility.waitUntilClickable(driver, signinBtn);
 //		signinBtn.click();
 		pageUtility.clickOnElement(signinBtn);
+		return new HomePage(driver);
 	}
 }

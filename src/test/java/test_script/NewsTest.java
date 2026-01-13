@@ -8,24 +8,27 @@ import org.testng.annotations.Test;
 import base.TestNGBase;
 import constants.Constants;
 import constants.Messages;
+import pages.HomePage;
 import pages.LoginPage;
 import pages.NewsPage;
 import utilities.ExcelUtility;
 
 public class NewsTest extends TestNGBase {
+	public HomePage homePage;
+	public NewsPage newsPage;
 	@Test(description = " Verify home link click ")
 	public void verifyHomeLinkClick() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
 		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserName(usernameValue);
-		loginPage.enterPassword(passwordValue);
-		loginPage.clickSignInBtn();
+		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
+//		loginPage.enterPassword(passwordValue);
+		homePage=loginPage.clickSignInBtn();
 
-		NewsPage NewsPage = new NewsPage(driver);
-		NewsPage.newsLinkClick();
-		NewsPage.homeLinkClick();
+//		NewsPage NewsPage = new NewsPage(driver);
+		newsPage=homePage.newsLinkClick();
+		homePage=newsPage.homeLinkClick();
 
 		String homePageURL = "https://groceryapp.uniqassosiates.com/admin/home";
 		String currentPageURL = driver.getCurrentUrl();
@@ -38,13 +41,13 @@ public class NewsTest extends TestNGBase {
 		String passwordValue = ExcelUtility.getStringData(1, 1, "LoginPage");
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserName(usernameValue);
-		loginPage.enterPassword(passwordValue);
-		loginPage.clickSignInBtn();
+		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
+//		loginPage.enterPassword(passwordValue);
+		homePage=loginPage.clickSignInBtn();
 
-		NewsPage NewsPage = new NewsPage(driver);
-		NewsPage.newsLinkClick();
-		NewsPage.resetLinkClick();
+		newsPage = new NewsPage(driver);
+		homePage.newsLinkClick();
+		newsPage.resetLinkClick();
 
 		String newsListPageURL = "https://groceryapp.uniqassosiates.com/admin/list-news";
 		String currentPageURL = driver.getCurrentUrl();
@@ -57,17 +60,18 @@ public class NewsTest extends TestNGBase {
 		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserName(usernameValue);
-		loginPage.enterPassword(passwordValue);
-		loginPage.clickSignInBtn();
+		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
+//		loginPage.enterPassword(passwordValue);
+		homePage=loginPage.clickSignInBtn();
 
-		NewsPage NewsPage = new NewsPage(driver);
-		NewsPage.newsLinkClick();
-		NewsPage.newBtnClick();
-		NewsPage.enternewsTextAreaValue("News Add Button test");
-		NewsPage.saveBtnClick();
+		newsPage = new NewsPage(driver);
+//		NewsPage.newsLinkClick();
+		homePage.newsLinkClick();
+		newsPage.newBtnClick();
+		newsPage.enternewsTextAreaValue("News Add Button test");
+		newsPage.saveBtnClick();
 
-		boolean isalertDisplayed = NewsPage.checkWhetherAlertDisplayed();
+		boolean isalertDisplayed = newsPage.checkWhetherAlertDisplayed();
 		Assert.assertTrue(isalertDisplayed, Messages.NEWS_ASSERTS_SAVE_BUTTON);
 
 	}
@@ -78,18 +82,18 @@ public class NewsTest extends TestNGBase {
 		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
 
 		LoginPage loginPage = new LoginPage(driver);
-		loginPage.enterUserName(usernameValue);
-		loginPage.enterPassword(passwordValue);
-		loginPage.clickSignInBtn();
+		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
+//		loginPage.enterPassword(passwordValue);
+		homePage=loginPage.clickSignInBtn();
 
 		String searchString = "news test";
-		NewsPage NewsPage = new NewsPage(driver);
-		NewsPage.newsLinkClick();
-		NewsPage.searchBtnClick();
-		NewsPage.enterSearchInput(searchString);
-		NewsPage.searchActionBtnClick();
+		NewsPage newsPage = new NewsPage(driver);
+		homePage.newsLinkClick();
+		newsPage.searchBtnClick();
+		newsPage.enterSearchInput(searchString);
+		newsPage.searchActionBtnClick();
 
-		boolean isFirstRowContainsSearchString = NewsPage.checkWhetherResultMatched(searchString);
+		boolean isFirstRowContainsSearchString = newsPage.checkWhetherResultMatched(searchString);
 		Assert.assertTrue(isFirstRowContainsSearchString, Messages.NEWS_ASSERTS_SEARCH_BUTTON);
 		/*
 		 * Another method //assertion WebElement

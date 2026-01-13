@@ -21,18 +21,30 @@ public class HomePage {
 	}
 	@FindBy(xpath = "//a[@class='nav-link' and @data-toggle='dropdown']")
 	WebElement adminIcon;
-	public void adminIconClick() {
+	public HomePage adminIconClick() {
 //		WebElement adminIcon = driver.findElement(By.xpath("//a[@data-toggle='dropdown']"));
 //		adminIcon.click();
 		pageUtility.clickOnElement(adminIcon);
+		return this;
 	}
 
 	@FindBy(xpath = "//i[@class='ace-icon fa fa-power-off']")
 	WebElement logoutBtn;
-	public void logoutBtnClick() {
+	public LoginPage logoutBtnClick() {
 //		WebElement logoutBtn = driver.findElement(By.xpath("//i[@class='ace-icon fa fa-power-off']"));
 		waitUtility.waitUntilClickable(driver, logoutBtn);
 //		logoutBtn.click();
 		pageUtility.clickOnElement(logoutBtn);
+		return new LoginPage(driver);
+	}
+	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']")
+	WebElement newsLink;
+
+	public NewsPage newsLinkClick() {
+//		WebElement newsLink = driver.findElement(By.xpath("//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']"));
+//		newsLink.click();
+
+		pageUtility.clickOnElement(newsLink);
+		return new NewsPage(driver);
 	}
 }

@@ -19,59 +19,56 @@ public class NewsPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']")
-	WebElement newsLink;
 
-	public void newsLinkClick() {
-//		WebElement newsLink = driver.findElement(By.xpath("//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-news']"));
-//		newsLink.click();
-
-		pageUtility.clickOnElement(newsLink);
-	}
 
 	@FindBy(linkText = "Home")
 	WebElement homeLink;
 
-	public void homeLinkClick() {
+	public HomePage homeLinkClick() {
 //		WebElement homeLink = driver.findElement(By.linkText("Home"));
 //		homeLink.click();
 		pageUtility.clickOnElement(homeLink);
+		return new HomePage(driver);
 	}
 
 	@FindBy(linkText = "Reset")
 	WebElement resetLink;
 
-	public void resetLinkClick() {
+	public NewsPage resetLinkClick() {
 //		WebElement resetLink = driver.findElement(By.linkText("Reset"));
 //		resetLink.click();
 		pageUtility.clickOnElement(resetLink);
+		return this;
 	}
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newBtn;
 
-	public void newBtnClick() {
+	public NewsPage newBtnClick() {
 //		WebElement newBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-danger']"));
 //		newBtn.click();
 		pageUtility.clickOnElement(newBtn);
+		return this;
 	}
 
 	@FindBy(xpath = "//textarea[@id='news']")
 	WebElement newsTextArea;
 
-	public void enternewsTextAreaValue(String newsText) {
+	public NewsPage enternewsTextAreaValue(String newsText) {
 //		WebElement newsTextArea = driver.findElement(By.xpath("//textarea[@id='news']"));
 //		newsTextArea.sendKeys(newsText);
 		pageUtility.sendDataToElement(newsTextArea, newsText);
+		return this;
 	}
 
 	@FindBy(xpath = "//button[@class='btn btn-danger']")
 	WebElement saveBtn;
 
-	public void saveBtnClick() {
+	public NewsPage saveBtnClick() {
 //		WebElement saveBtn = driver.findElement(By.xpath("//button[@class='btn btn-danger']"));
 //		saveBtn.click();
 		pageUtility.clickOnElement(saveBtn);
+		return this;
 	}
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
