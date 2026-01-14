@@ -47,4 +47,14 @@ public class HomePage {
 		pageUtility.clickOnElement(newsLink);
 		return new NewsPage(driver);
 	}
+	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
+	WebElement adminPageink;
+
+	public AdminPage adminPageinkClick() {
+//		WebElement adminPageink = driver.findElement(By.xpath("//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin' ]"));
+//		adminPageink.click();
+
+		pageUtility.clickOnElement(adminPageink);
+		return new AdminPage(driver);
+	}
 }

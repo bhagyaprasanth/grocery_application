@@ -20,62 +20,58 @@ public class AdminPage {
 		PageFactory.initElements(driver, this);
 	}
 
-	@FindBy(xpath = "//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin']")
-	WebElement adminPageink;
-
-	public void adminPageinkClick() {
-//		WebElement adminPageink = driver.findElement(By.xpath("//a[@class='small-box-footer' and @href='https://groceryapp.uniqassosiates.com/admin/list-admin' ]"));
-//		adminPageink.click();
-
-		pageUtility.clickOnElement(adminPageink);
-	}
 
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newBtn;
 
-	public void newBtnClick() {
+	public AdminPage newBtnClick() {
 //		WebElement newBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-danger']"));
 		waitUtility.waitUntilClickable(driver, newBtn);
 //		newBtn.click();
 		pageUtility.clickOnElement(newBtn);
+		return this;
 	}
 
 	@FindBy(id = "username")
 	WebElement usernameAdminTestFld;
 
-	public void enterNewUsername(String randomUsernameFaker) {
+	public AdminPage enterNewUsername(String randomUsernameFaker) {
 //		WebElement usernameAdminTestFld = driver.findElement(By.id("username"));
 //		usernameAdminTestFld.sendKeys(randomUsernameFaker);
 		pageUtility.sendDataToElement(usernameAdminTestFld, randomUsernameFaker);
+		return this;
 	}
 
 	@FindBy(id = "password")
 	WebElement passwordAdminTestFld;
 
-	public void enternewUserPassword(String randomPasswordFaker) {
+	public AdminPage enternewUserPassword(String randomPasswordFaker) {
 //		WebElement passwordAdminTestFld = driver.findElement(By.id("password"));
 //		passwordAdminTestFld.sendKeys(randomPasswordFaker);
 		pageUtility.sendDataToElement(passwordAdminTestFld, randomPasswordFaker);
+		return this;
 	}
 
 	@FindBy(xpath = "//select[@id='user_type']")
 	WebElement dropdown;
 
-	public void selectUsertype(int userTypeIndex) {
+	public AdminPage selectUsertype(int userTypeIndex) {
 //		WebElement dropdown = driver.findElement(By.xpath("//select[@id='user_type']"));
 //		Select select = new Select(dropdown);
 //		select.selectByIndex(userTypeIndex);
 		pageUtility.selectDataWithIndex(dropdown,userTypeIndex);
+		return this;
 	}
 
 	@FindBy(xpath = "//button[@name='Create']")
 	WebElement saveBtn;
 
-	public void saveBtnClick() {
+	public AdminPage saveBtnClick() {
 //		WebElement saveBtn = driver.findElement(By.xpath("//button[@name='Create']"));
 		waitUtility.waitUntilClickable(driver, saveBtn);
 		pageUtility.clickOnElement(saveBtn);
 //		saveBtn.click();
+		return this;
 	}
 
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")

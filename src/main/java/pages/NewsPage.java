@@ -74,29 +74,32 @@ public class NewsPage {
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-primary']")
 	WebElement searchBtn;
 
-	public void searchBtnClick() {
+	public NewsPage searchBtnClick() {
 //		WebElement searchBtn = driver.findElement(By.xpath("//a[@class='btn btn-rounded btn-primary']"));
 //		searchBtn.click();
 		pageUtility.clickOnElement(searchBtn);
+		return this;
 	}
 
 	@FindBy(xpath = "//input[@name='un']")
 	WebElement searchInputFld;
 
-	public void enterSearchInput(String searchString) {
+	public NewsPage enterSearchInput(String searchString) {
 //		WebElement searchInputFld = driver.findElement(By.xpath("//input[@name='un']"));
 //		searchInputFld.sendKeys(searchString);
 		pageUtility.sendDataToElement(searchInputFld, searchString);
+		return this;
 	}
 
 	@FindBy(xpath = "//button[@name='Search']")
 	WebElement searchActionBtn;
 
-	public void searchActionBtnClick() {
+	public NewsPage searchActionBtnClick() {
 //		WebElement searchActionBtn = driver.findElement(By.xpath("//button[@name='Search']"));
 		waitUtility.waitUntilClickable(driver, searchActionBtn);
 //		searchActionBtn.click();
 		pageUtility.clickOnElement(searchActionBtn);
+		return this;
 	}
 
 	@FindBy(xpath = "//div[@class='alert alert-success alert-dismissible']")

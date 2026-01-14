@@ -16,6 +16,7 @@ import utilities.ExcelUtility;
 public class NewsTest extends TestNGBase {
 	public HomePage homePage;
 	public NewsPage newsPage;
+
 	@Test(description = " Verify home link click ")
 	public void verifyHomeLinkClick() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
@@ -24,11 +25,11 @@ public class NewsTest extends TestNGBase {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
 //		loginPage.enterPassword(passwordValue);
-		homePage=loginPage.clickSignInBtn();
+		homePage = loginPage.clickSignInBtn();
 
 //		NewsPage NewsPage = new NewsPage(driver);
-		newsPage=homePage.newsLinkClick();
-		homePage=newsPage.homeLinkClick();
+		newsPage = homePage.newsLinkClick();
+		homePage = newsPage.homeLinkClick();
 
 		String homePageURL = "https://groceryapp.uniqassosiates.com/admin/home";
 		String currentPageURL = driver.getCurrentUrl();
@@ -43,10 +44,10 @@ public class NewsTest extends TestNGBase {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
 //		loginPage.enterPassword(passwordValue);
-		homePage=loginPage.clickSignInBtn();
+		homePage = loginPage.clickSignInBtn();
 
-		newsPage = new NewsPage(driver);
-		homePage.newsLinkClick();
+//		newsPage = new NewsPage(driver);
+		newsPage=homePage.newsLinkClick();
 		newsPage.resetLinkClick();
 
 		String newsListPageURL = "https://groceryapp.uniqassosiates.com/admin/list-news";
@@ -54,7 +55,7 @@ public class NewsTest extends TestNGBase {
 		Assert.assertEquals(newsListPageURL, currentPageURL, Messages.NEWS_ASSERTS_HOME_PAGE_LINK);
 	}
 
-	@Test(description = " Verify save news click ",groups = {"smoke"})
+	@Test(description = " Verify save news click ", groups = { "smoke" })
 	public void verifySaveNews() throws IOException {
 		String usernameValue = ExcelUtility.getStringData(1, 0, Constants.LOGINSHEET);
 		String passwordValue = ExcelUtility.getStringData(1, 1, Constants.LOGINSHEET);
@@ -62,14 +63,12 @@ public class NewsTest extends TestNGBase {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
 //		loginPage.enterPassword(passwordValue);
-		homePage=loginPage.clickSignInBtn();
+		homePage = loginPage.clickSignInBtn();
 
-		newsPage = new NewsPage(driver);
+//		newsPage = new NewsPage(driver);
 //		NewsPage.newsLinkClick();
-		homePage.newsLinkClick();
-		newsPage.newBtnClick();
-		newsPage.enternewsTextAreaValue("News Add Button test");
-		newsPage.saveBtnClick();
+		newsPage=homePage.newsLinkClick();
+		newsPage.newBtnClick().enternewsTextAreaValue("News Add Button test").saveBtnClick();
 
 		boolean isalertDisplayed = newsPage.checkWhetherAlertDisplayed();
 		Assert.assertTrue(isalertDisplayed, Messages.NEWS_ASSERTS_SAVE_BUTTON);
@@ -84,14 +83,12 @@ public class NewsTest extends TestNGBase {
 		LoginPage loginPage = new LoginPage(driver);
 		loginPage.enterUserName(usernameValue).enterPassword(passwordValue);
 //		loginPage.enterPassword(passwordValue);
-		homePage=loginPage.clickSignInBtn();
+		homePage = loginPage.clickSignInBtn();
 
 		String searchString = "news test";
-		NewsPage newsPage = new NewsPage(driver);
-		homePage.newsLinkClick();
-		newsPage.searchBtnClick();
-		newsPage.enterSearchInput(searchString);
-		newsPage.searchActionBtnClick();
+//		newsPage = new NewsPage(driver);
+		newsPage=homePage.newsLinkClick();
+		newsPage.searchBtnClick().enterSearchInput(searchString).searchActionBtnClick();
 
 		boolean isFirstRowContainsSearchString = newsPage.checkWhetherResultMatched(searchString);
 		Assert.assertTrue(isFirstRowContainsSearchString, Messages.NEWS_ASSERTS_SEARCH_BUTTON);
