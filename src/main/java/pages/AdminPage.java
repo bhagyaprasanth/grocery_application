@@ -20,7 +20,6 @@ public class AdminPage {
 		PageFactory.initElements(driver, this);
 	}
 
-
 	@FindBy(xpath = "//a[@class='btn btn-rounded btn-danger']")
 	WebElement newBtn;
 
